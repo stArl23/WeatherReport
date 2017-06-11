@@ -9,18 +9,10 @@ import java.util.Arrays;
 public class WeatherInformation {
     private Weather yesterday;
     private Weather[] forecast;
+    private String city;
     private String ganmao;
     private String wendu;
 
-    public WeatherInformation(Weather yesterday, Weather[] forecast, String ganmao, String wendu) {
-        this.yesterday = yesterday;
-        this.forecast = forecast;
-        this.ganmao = ganmao;
-        this.wendu = wendu;
-    }
-
-    public WeatherInformation() {
-    }
 
     public Weather getYesterday() {
         return yesterday;
@@ -54,14 +46,23 @@ public class WeatherInformation {
         this.wendu = wendu;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     @Override
     public String toString() {
-        return "WeatherInformation{" +
+        return "WeatherInformation[" +
                 "yesterday=" + yesterday +
                 ", forecast=" + Arrays.toString(forecast) +
-                ", ganmao='" + ganmao + '\'' +
-                ", wendu='" + wendu + '\'' +
-                '}';
+                ", city='" + city +
+                ", ganmao='" + ganmao +
+                ", wendu='" + wendu +
+                ']';
     }
 }
 

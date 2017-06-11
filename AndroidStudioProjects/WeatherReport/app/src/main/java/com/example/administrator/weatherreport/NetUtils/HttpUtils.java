@@ -6,11 +6,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 /**
  * Created by Administrator on 2017/6/3.
  */
 public class HttpUtils {
     public static void setHttpRequest(final String address,final HandleResponse handleResponse){
+        //不放在线程中会报android.os.NetworkOnMainThreadException
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -24,12 +26,15 @@ public class HttpUtils {
                     connection.connect();
                     InputStream inputStream=connection.getInputStream();
                     InputStreamReader inputStreamReader=new InputStreamReader(inputStream);
+
                     BufferedReader bufferedReader=new BufferedReader(inputStreamReader);
                     String line=null;
                     StringBuffer response=new StringBuffer();
                     while((line=bufferedReader.readLine())!=null)
                         response.append(line);
-                    if(handleResponse!=null)handleResponse.onFinish(response.toString());
+                    if(handleResponse!=null)handleResponse.onFinish(
+                            response.toString()
+                    );
                 }
                 catch(Exception e){
                     if(handleResponse!=null)handleResponse.onError(e);
@@ -38,16 +43,19 @@ public class HttpUtils {
                     if(connection!=null)
                         connection.disconnect();
                 }
+
             }
         }).start();
+
     }
 
-    public static void  main(String[] args){
+   /* public static void  main(String[] args){
         final String address="http://www.sojson.com/open/api/weather/json.shtml?city=杭州";
         setHttpRequest(address, new HandleResponse() {
             @Override
             public void onFinish(String response) {
-                System.out.println(response);
+                Response response1= JsonParse.readWeather(response);
+                System.out.println(response1);
             }
 
             @Override
@@ -55,5 +63,5 @@ public class HttpUtils {
 
             }
         });
-    }
+    }*/
 }

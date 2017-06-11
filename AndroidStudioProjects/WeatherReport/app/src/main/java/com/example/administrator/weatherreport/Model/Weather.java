@@ -7,22 +7,11 @@ package com.example.administrator.weatherreport.Model;
 public class Weather {
     private String date;
     private String high;
-    private String fx;
+    private String fengxiang;
     private String low;
-    private String fl;
+    private String fengli;
     private String type;
 
-    public Weather(String date, String high, String fx, String low, String fl, String type) {
-        this.date = date;
-        this.high = high;
-        this.fx = fx;
-        this.low = low;
-        this.fl = fl;
-        this.type = type;
-    }
-
-    public Weather() {
-    }
 
     public String getDate() {
         return date;
@@ -40,12 +29,12 @@ public class Weather {
         this.high = high;
     }
 
-    public String getFx() {
-        return fx;
+    public String getFengxiang() {
+        return fengxiang;
     }
 
-    public void setFx(String fx) {
-        this.fx = fx;
+    public void setFengxiang(String fengxiang) {
+        this.fengxiang = fengxiang;
     }
 
     public String getLow() {
@@ -56,12 +45,12 @@ public class Weather {
         this.low = low;
     }
 
-    public String getFl() {
-        return fl;
+    public String getFengli() {
+        return fengli;
     }
 
-    public void setFl(String fl) {
-        this.fl = fl;
+    public void setFengli(String fengli) {
+        this.fengli = fengli;
     }
 
     public String getType() {
@@ -74,13 +63,13 @@ public class Weather {
 
     @Override
     public String toString() {
-        return "Weather{" +
-                "date='" + date + '\'' +
-                ", high='" + high + '\'' +
-                ", fx='" + fx + '\'' +
-                ", low='" + low + '\'' +
-                ", fl='" + fl + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+        return "Weather[" +
+                "date=" + date +
+                ", high=" + high +
+                ", fengxiang=" + fengxiang +
+                ", low=" + low +
+                ", fengli=" + fengli +
+                ", type=" + type+
+                ']';
     }
 }
